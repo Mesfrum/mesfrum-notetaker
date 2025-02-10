@@ -8,7 +8,7 @@ chrome.action.onClicked.addListener((tab) => {
   }
 });
 
-function toggleSidebar() {
+export function toggleSidebar() {
   const sidebar = document.getElementById("react-sidebar");
   if (sidebar) {
     sidebar.remove();
@@ -25,6 +25,7 @@ function toggleSidebar() {
         height: 100%;
         border: 1px black solid;
         z-index: 99999;
+        background-color: white;
       `;
     document.body.appendChild(iframe);
   }

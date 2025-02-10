@@ -5,5 +5,6 @@ export const saveNote = async (note) => {
 
 export const loadNote = async () => {
   const data = await chrome.storage.local.get("note");
+  console.log(data, "data note");
   return data.note;
 };
