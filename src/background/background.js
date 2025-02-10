@@ -8,7 +8,16 @@ chrome.action.onClicked.addListener((tab) => {
   }
 });
 
-export function toggleSidebar() {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "toggleSidebar" && sender.tab?.id) {
+    chrome.scripting.executeScript({
+      target: { tabId: sender.tab.id },
+      function: toggleSidebar,
+    });
+  }
+});
+
+function toggleSidebar() {
   const sidebar = document.getElementById("react-sidebar");
   if (sidebar) {
     sidebar.remove();
